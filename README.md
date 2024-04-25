@@ -6,6 +6,6 @@ Adds a custom quantity field to the product detail page in Shopware 6. This plug
 - Go to the custom/plugins directory: `cd custom/plugins`
 - Clone the repository: `git clone git@github.com:jmadsm/Shopware-Plugin-Custom-Quantity-Field.git`
 
-## #Assuming you are running the project in Docker container:
+### Assuming you are running the project in Docker container:
 - Enter the container: `docker exec -it <container-name> /bin/bash`
 - Install the plugin: `./bin/console plugin:install JmaCustomQuantityField --activate`
