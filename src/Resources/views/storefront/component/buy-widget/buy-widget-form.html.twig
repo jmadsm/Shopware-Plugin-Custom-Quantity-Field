@@ -1,0 +1,50 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
+{% block buy_widget_buy_quantity %}
+    {% if config("JmaCustomQuantityField").config.quantityProductDetailPage %}
+        {% block page_product_detail_custom_quantity_field %}
+            <div class="custom-quantity-field-advanced d-flex flex-wrap" data-custom-quantity="true">
+                {% block page_product_detail_custom_quantity_field_select %}
+                    <div class="custom-quantity-field-wrapper d-inline-flex justify-content-between"
+                         id="quantityData"
+                         data-maxPurchase="{{ product.calculatedMaxPurchase }}"
+                         data-minPurchase="{{ product.minPurchase }}"
+                         data-purchaseSteps="{{ product.purchaseSteps }}"
+                         data-autoSubmit="0">
+                        {% block page_product_detail_custom_quantity_field_select_button_minus %}
+                            <button type="button"
+                                    class="btn-secondary custom-quantity-field-button is-minus flex-column
+                                    align-content-center"
+                                    aria-label="lineItemBtnMinus[{{ product.id }}]">
+                                {% sw_icon 'minus' style { 'size': 'sm' } %}
+                            </button>
+                        {% endblock %}
+                        {% block page_product_detail_custom_quantity_field_select_input_field %}
+                            <label class="mb-0 pb-1 pt-1">
+                                <input id="lineItems[{{ product.id }}][quantity]" class="custom-quantity-field-input
+                                 h-100"
+                                       name="lineItems[{{ product.id }}][quantity]" type="text"
+                                       value="{{ page.product.minPurchase }}">
+                            </label>
+                        {% endblock %}
+                        {% block page_product_detail_custom_quantity_field_select_button_plus %}
+                            <button type="button"
+                                    class="btn-secondary custom-quantity-field-button is-plus flex-column
+                                    align-content-center"
+                                    aria-label="lineItemBtnPlus[{{ product.id }}]">
+                                {% sw_icon 'plus' style { 'size': 'sm' } %}</button>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+                {% block page_product_detail_custom_quantity_field_packunit %}
+                    {% if product.packUnit is not null %}
+                        <div class="custom-quantity-field-packunit">
+                            {{ product.packUnit }}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

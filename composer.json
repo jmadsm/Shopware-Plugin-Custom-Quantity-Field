@@ -1,0 +1,46 @@
+{
+    "name": "jma/custom-quantity-field",
+    "description": "JMA Custom Quantity Field",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "version": "2.0.4",
+    "authors": [
+        {
+            "name": "JMA A/S (Gintas Pociunas)",
+            "homepage": "https://www.jma.dk/"
+        }
+    ],
+    "require": {
+        "shopware/core": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jma\\CustomQuantityField\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Jma\\CustomQuantityField\\JmaCustomQuantityField",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "copyright": "(c) by JMA A/S",
+        "label": {
+            "da-DK": "Custom Antal Felt",
+            "en-GB": "Custom Quantity Field",
+            "de-DE": "Benutzerdefiniertes Mengenfeld"
+        },
+        "description": {
+            "da-DK": "Ændrer antal vælger fra en dropdown til et input felt",
+            "en-GB": "Changes the quantity field from a selector to an input field",
+            "de-DE": "Ändert das Mengenfeld von einem Selektor in ein Eingabefeld"
+        },
+        "manufacturerLink": {
+            "dk-DK": "https://www.jma.dk",
+            "en-GB": "https://www.jma.dk",
+            "de-DE": "https://www.jma.dk"
+        },
+        "supportLink": {
+            "da-DK": "mailto:support@jma.dk",
+            "en-GB": "mailto:support@jma.dk",
+            "de-DE": "mailto:support@jma.dk"
+        }
+    }
+}

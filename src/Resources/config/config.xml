@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Basic Configuration</title>
+
+        <input-field type="bool">
+            <name>quantityProductDetailPage</name>
+            <label>Show custom quantity on product detail page</label>
+            <helpText>The custom quantity selection is displayed in the product box on product detail pages.</helpText>
+        </input-field>
+
+        <input-field type="bool">
+            <name>quantityListingPage</name>
+            <label>Show custom quantity in listings</label>
+            <helpText>The custom quantity selection is displayed in the product box next to the buy button on listings and shopping experiences.</helpText>
+        </input-field>
+
+        <input-field type="bool">
+            <name>quantityCheckoutPage</name>
+            <label>Show custom quantity on checkout page</label>
+            <helpText>The custom quantity selection is displayed on the checkout page.</helpText>
+        </input-field>
+
+        <input-field type="bool">
+            <name>quantityOffCanvas</name>
+            <label>Show custom quantity in shopping cart off canvas</label>
+            <helpText>The custom quantity selection is displayed on the shopping cart off canvas.</helpText>
+        </input-field>
+
+    </card>
+</config>

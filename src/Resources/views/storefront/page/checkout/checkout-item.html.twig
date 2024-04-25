@@ -1,0 +1,83 @@
+{% sw_extends '@Parent/storefront/page/checkout/checkout-item.html.twig' %}
+
+ {% block page_checkout_item_quantity_form %}
+     {% if lineItem.quantityInformation and lineItem.stackable %}
+         {% if config("JmaCustomQuantityField").config.quantityCheckoutPage %}
+             <div class="custom-quantity-field-advanced-offcanvas d-flex flex-wrap ml-4">
+                 <form
+                     id="form[{{ lineItem.id }}]"
+                     action="{{ path('frontend.checkout.line-item.change-quantity', {'id': lineItem.id}) }}"
+                     class="cart-item-quantity-container"
+                     method="post">
+
+                     {% block page_checkout_item_quantity_form_csrf %}
+                         {{ parent() }}
+                     {% endblock %}
+
+                     {% block page_checkout_item_quantity_redirect %}
+                         {{ parent() }}
+                     {% endblock %}
+
+                     {% set quantityInformation = lineItem.quantityInformation %}
+                     {% if quantityInformation.maxPurchase %}
+                         {% set maxQuantity = quantityInformation.maxPurchase %}
+                     {% else %}
+                         {% set maxQuantity = config("core").cart.maxQuantity %}
+                     {% endif %}
+
+                     {% block page_product_detail_buy_quantity %}
+                         {% if config("JmaCustomQuantityField").config.quantityCheckoutPage %}
+                             {% block page_product_detail_custom_quantity_field %}
+                                 <div data-custom-quantity="true">
+                                     {% block page_product_detail_custom_quantity_field_select %}
+                                         <div
+                                             class="custom-quantity-field-wrapper-margin custom-quantity-field-wrapper
+                                             d-inline-flex justify-content-between"
+                                             id="quantityData"
+                                             data-maxPurchase="{{ maxQuantity }}"
+                                             data-minPurchase="{{ lineItem.quantityInformation.minPurchase }}"
+                                             data-purchaseSteps="{{ lineItem.quantityInformation.purchaseSteps }}"
+                                             data-autoSubmit="1"
+                                             data-id="{{ lineItem.id }}">
+                                             {% block page_product_detail_custom_quantity_field_select_button_minus %}
+                                                 <button type="button"
+                                                         name="quantity"
+                                                         class="btn-secondary custom-quantity-field-button is-minus
+                                                         flex-column align-content-center"
+                                                         aria-label="lineItemBtnMinus[{{ lineItem.id }}]">
+                                                     {% sw_icon 'minus' style { 'size': 'xs' } %}
+                                                 </button>
+                                             {% endblock %}
+                                             {% block page_product_detail_custom_quantity_field_select_input_field %}
+                                                 <label class="mb-0 pb-1 pt-1">
+                                                     <input class="custom-quantity-field-input h-100"
+                                                            name="quantity" type="text"
+                                                            value="{{ lineItem.quantity }}">
+                                                 </label>
+                                             {% endblock %}
+                                             {% block page_product_detail_custom_quantity_field_select_button_plus %}
+                                                 <button type="button"
+                                                         name="quantity"
+                                                         class="btn-secondary custom-quantity-field-button is-plus
+                                                         flex-column align-content-center"
+                                                         aria-label="lineItemBtnPlus[{{ lineItem.id }}]">
+                                                     {% sw_icon 'plus' style { 'size': 'xs' } %}
+                                                 </button>
+                                             {% endblock %}
+                                         </div>
+                                     {% endblock %}
+                                 </div>
+                             {% endblock %}
+                         {% else %}
+                             {{ parent() }}
+                         {% endif %}
+                     {% endblock %}
+                 </form>
+             </div>
+         {% else %}
+             {{ parent() }}
+         {% endif %}
+     {% else %}
+         <p class="text-right w-100 my-auto">{{ lineItem.quantity }}</p>
+     {% endif %}
+ {% endblock %}

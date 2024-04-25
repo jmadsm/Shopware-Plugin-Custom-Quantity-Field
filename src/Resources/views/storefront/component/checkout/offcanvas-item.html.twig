@@ -1,0 +1,72 @@
+{% sw_extends '@Parent/storefront/component/checkout/offcanvas-item.html.twig' %}
+
+{% block component_offcanvas_product_quantity_form %}
+    {% if lineItem.quantityInformation and lineItem.stackable %}
+        <form action="{{ path('frontend.checkout.line-item.change-quantity', {'id': id}) }}"
+              class="cart-item-quantity-container"
+              method="post"
+              id="form[{{ lineItem.id }}]">
+
+            {% block component_offcanvas_product_quantity_form_csrf %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% block component_offcanvas_product_quantity_form_redirect %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% set quantityInformation = lineItem.quantityInformation %}
+            {% if quantityInformation.maxPurchase %}
+                {% set maxQuantity = quantityInformation.maxPurchase %}
+            {% else %}
+                {% set maxQuantity = config("core").cart.maxQuantity %}
+            {% endif %}
+
+            {% block component_offcanvas_product_buy_quantity %}
+
+                {% if config("JmaCustomQuantityField").config.quantityOffCanvas %}
+                    <div class="custom-quantity-field-advanced-offcanvas d-flex flex-wrap" data-custom-quantity="true">
+                        {% block page_product_detail_custom_quantity_field_select %}
+                            <div
+                                    class="custom-quantity-field-wrapper custom-quantity-field-advanced-offcanvas-size d-inline-flex
+                     justify-content-between"
+                                    id="quantityData"
+                                    data-id="{{ lineItem.id }}"
+                                    data-maxPurchase="{{ maxQuantity }}"
+                                    data-minPurchase="{{ quantityInformation.minPurchase }}"
+                                    data-purchaseSteps="{{ quantityInformation.purchaseSteps }}"
+                                    data-autoSubmit="2">
+                                {% block page_product_detail_custom_quantity_field_select_button_minus %}
+                                    <button type="button"
+                                            class="btn-secondary custom-quantity-field-button is-minus flex-column
+                                 align-content-center"
+                                            aria-label="lineItemBtnMinus">
+                                        {% sw_icon 'minus' style { 'size': 'xs' } %}
+                                    </button>
+                                {% endblock %}
+                                {% block page_product_detail_custom_quantity_field_select_input_field %}
+                                    <label class="mb-0 pb-1 pt-1">
+                                        <input name="quantity"
+                                               type="text"
+                                               class="custom-quantity-field-input js-offcanvas-cart-change-quantity h-100"
+                                               value="{{ quantity }}">
+                                    </label>
+                                {% endblock %}
+                                {% block page_product_detail_custom_quantity_field_select_button_plus %}
+                                    <button type="button"
+                                            class="btn-secondary custom-quantity-field-button is-plus flex-column
+                                 align-content-center"
+                                            aria-label="lineItemBtnPlus">
+                                        {% sw_icon 'plus' style { 'size': 'xs' } %}
+                                    </button>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% else %}
+                    {{ parent() }}
+                {% endif %}
+            {% endblock %}
+        </form>
+    {% endif %}
+{% endblock %}
