@@ -9,6 +9,9 @@
      {% block page_product_detail_buy_product_buy_info %}
          {{ parent() }}
      {% endblock %}
+
+     {% set phoneOrdersOnly = product.customFields.custom_dsm_product_attributes_not_sold_online %}
+
      {% if config("JmaCustomQuantityField").config.quantityListingPage %}
          {% block page_product_detail_custom_quantity_field %}
              <div class=" custom-quantity-field-advanced d-flex flex-row" data-custom-quantity="true">
@@ -48,22 +51,34 @@
                  {% endblock %}
                  {% block page_product_detail_custom_quantity_field_button %}
                      <div class="d-flex flex-wrap custom-quantity-field-btn">
-                         <button class="btn btn-block btn-buy"
+                         {% if phoneOrdersOnly %}
+                             <div class="custom-qty-field-plugin-phoneOrderOnly mt-2 danger-text">
+                                 {{ "jma.themeOverrides.product.details.phoneOrdersOnly"|trans|sw_sanitize }}
+                             </div>
+                         {% else %}
+                         <button class="custom-qty-field-plugin btn btn-block btn-buy"
                                  title="{{ "listing.boxAddProduct"|trans|striptags }}">
                              {% sw_icon 'cart' style {
                                  'color': 'color-cart',
                                  'size': 'lg'
                              } %}
                          </button>
+                         {% endif %}
                      </div>
                  {% endblock %}
              </div>
          {% endblock %}
      {% else %}
-         <button class="btn btn-block btn-buy"
-                 title="{{ "listing.boxAddProduct"|trans|striptags }}">
-             {{ "listing.boxAddProduct"|trans|sw_sanitize }}
-         </button>
+         {% if phoneOrdersOnly %}
+             <div class="custom-qty-field-plugin-phoneOrderOnly mt-2 danger-text">
+                 {{ "jma.themeOverrides.product.details.phoneOrdersOnly"|trans|sw_sanitize }}
+             </div>
+         {% else %}
+             <button class="custom-qty-field-plugin btn btn-block btn-buy"
+                     title="{{ "listing.boxAddProduct"|trans|striptags }}">
+                 {{ "listing.boxAddProduct"|trans|sw_sanitize }}
+             </button>
+         {% endif %}
      {% endif %}
 
 
