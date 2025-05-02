@@ -52,17 +52,19 @@
                  {% block page_product_detail_custom_quantity_field_button %}
                      <div class="d-flex flex-wrap custom-quantity-field-btn">
                          {% if phoneOrdersOnly %}
-                             <div class="custom-qty-field-plugin-phoneOrderOnly mt-2 danger-text">
-                                 {{ "jma.themeOverrides.product.details.phoneOrdersOnly"|trans|sw_sanitize }}
+                             <div class="custom-qty-field-plugin-phoneOrderOnly-container mt-2 px-1">
+                                 <div class="custom-qty-field-plugin-phoneOrderOnly danger-text">
+                                     {{ "jma.themeOverrides.product.details.phoneOrdersOnly"|trans|sw_sanitize }}
+                                 </div>
                              </div>
                          {% else %}
-                         <button class="custom-qty-field-plugin btn btn-block btn-buy"
-                                 title="{{ "listing.boxAddProduct"|trans|striptags }}">
-                             {% sw_icon 'cart' style {
-                                 'color': 'color-cart',
-                                 'size': 'lg'
-                             } %}
-                         </button>
+                             <button class="custom-qty-field-plugin btn btn-block btn-buy"
+                                     title="{{ "listing.boxAddProduct"|trans|striptags }}">
+                                 {% sw_icon 'cart' style {
+                                     'color': 'color-cart',
+                                     'size': 'lg'
+                                 } %}
+                             </button>
                          {% endif %}
                      </div>
                  {% endblock %}
@@ -70,8 +72,10 @@
          {% endblock %}
      {% else %}
          {% if phoneOrdersOnly %}
-             <div class="custom-qty-field-plugin-phoneOrderOnly mt-2 danger-text">
-                 {{ "jma.themeOverrides.product.details.phoneOrdersOnly"|trans|sw_sanitize }}
+             <div class="custom-qty-field-plugin-phoneOrderOnly-container mt-2 px-1">
+                 <div class="custom-qty-field-plugin-phoneOrderOnly danger-text">
+                     {{ "jma.themeOverrides.product.details.phoneOrdersOnly"|trans|sw_sanitize }}
+                 </div>
              </div>
          {% else %}
              <button class="custom-qty-field-plugin btn btn-block btn-buy"

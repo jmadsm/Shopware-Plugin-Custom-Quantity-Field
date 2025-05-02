@@ -1,134 +1,140 @@
 .custom-quantity-field-advanced {
-    min-width: 110px;
+  min-width: 110px;
 
-    .custom-quantity-field-wrapper {
-        width: 100%;
-        min-width: 40px;
-        position: relative;
-        @if $enable-rounded {
-            border-radius: $border-radius;
-        }
-        border: solid $border-width $border-color;
+  .custom-quantity-field-wrapper {
+    width: 100%;
+    min-width: 40px;
+    position: relative;
+    @if $enable-rounded {
+      border-radius: $border-radius;
+    }
+    border: solid $border-width $border-color;
 
-        .custom-quantity-field-input {
-            min-width: 30px;
-            width: 100%;
-            text-align: center;
-            border: none;
-        }
-
-        .custom-quantity-field-button {
-            padding: 3px 5px;
-            margin-top: 7px;
-            margin-bottom: 7px;
-            border: none;
-            @if $enable-rounded {
-                border-radius: $border-radius;
-            }
-
-            .icon {
-                color: $sw-background-color;
-            }
-
-            &.is-minus {
-                margin-left: 6px;
-                margin-right: 4px;
-            }
-
-            &.is-plus {
-                margin-right: 6px;
-                margin-left: 4px;
-            }
-        }
+    .custom-quantity-field-input {
+      min-width: 30px;
+      width: 100%;
+      text-align: center;
+      border: none;
     }
 
-    .custom-quantity-field-packunit {
-        text-align: center;
-        font-weight: $font-weight-bold;
-    }
+    .custom-quantity-field-button {
+      padding: 3px 5px;
+      margin-top: 7px;
+      margin-bottom: 7px;
+      border: none;
+      @if $enable-rounded {
+        border-radius: $border-radius;
+      }
 
-    .cart-item-quantity-container {
-        min-width: 130px;
-    }
+      .icon {
+        color: $sw-background-color;
+      }
 
-    .custom-quantity-field-column{
-        width: 100%;
-    }
+      &.is-minus {
+        margin-left: 6px;
+        margin-right: 4px;
+      }
 
-    .custom-quantity-field-btn{
-        width: 100%;
-        min-width: 50px;
-
-        .icon-color-cart {
-            color: $sw-background-color;
-        }
+      &.is-plus {
+        margin-right: 6px;
+        margin-left: 4px;
+      }
     }
+  }
+
+  .custom-quantity-field-packunit {
+    text-align: center;
+    font-weight: $font-weight-bold;
+  }
+
+  .cart-item-quantity-container {
+    min-width: 130px;
+  }
+
+  .custom-quantity-field-column {
+    width: 100%;
+  }
+
+  .custom-quantity-field-btn {
+    width: 100%;
+    min-width: 50px;
+
+    .icon-color-cart {
+      color: $sw-background-color;
+    }
+  }
 }
 
 
 .custom-quantity-field-advanced-offcanvas {
-    .custom-quantity-field-wrapper {
-        line-height: $line-height-lg;
-        width: 100%;
-        min-width: 90px;
-        position: relative;
-        @if $enable-rounded {
-            border-radius: $border-radius;
-        }
-        border: solid $border-width $border-color;
+  .custom-quantity-field-wrapper {
+    line-height: $line-height-lg;
+    width: 100%;
+    min-width: 90px;
+    position: relative;
+    @if $enable-rounded {
+      border-radius: $border-radius;
+    }
+    border: solid $border-width $border-color;
 
-        .custom-quantity-field-input {
-            min-width: 30px;
-            width: 100%;
-            text-align: center;
-            border: none;
-        }
-
-        .custom-quantity-field-button {
-            padding: 2px 4px;
-            margin-top: 4px;
-            margin-bottom: 4px;
-            line-height: $line-height-lg;
-            @if $enable-rounded {
-                border-radius: $border-radius;
-            }
-            border: none;
-
-            .icon {
-                color: $sw-background-color;
-            }
-
-            &.is-minus {
-                margin-left: 3px;
-                margin-right: 3px;
-            }
-
-            &.is-plus {
-                margin-right: 3px;
-                margin-left: 3px;
-            }
-        }
+    .custom-quantity-field-input {
+      min-width: 30px;
+      width: 100%;
+      text-align: center;
+      border: none;
     }
 
-    .custom-quantity-field-advanced-offcanvas-size{
-        width: 75%;
-        margin-left: 25px;
+    .custom-quantity-field-button {
+      padding: 2px 4px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      line-height: $line-height-lg;
+      @if $enable-rounded {
+        border-radius: $border-radius;
+      }
+      border: none;
+
+      .icon {
+        color: $sw-background-color;
+      }
+
+      &.is-minus {
+        margin-left: 3px;
+        margin-right: 3px;
+      }
+
+      &.is-plus {
+        margin-right: 3px;
+        margin-left: 3px;
+      }
     }
+  }
+
+  .custom-quantity-field-advanced-offcanvas-size {
+    width: 75%;
+    margin-left: 25px;
+  }
 }
 
 @include media-breakpoint-up(sm) {
-    .custom-quantity-field-advanced-offcanvas {
-        .custom-quantity-field-wrapper-margin {
-            margin-left: -20px;
-        }
-
-        .custom-quantity-field-wrapper {
-            min-width: 110px;
-        }
-
-        .custom-quantity-field-advanced-offcanvas-size{
-            width: 100%;
-            margin-left: 0;
-        }
+  .custom-quantity-field-advanced-offcanvas {
+    .custom-quantity-field-wrapper-margin {
+      margin-left: -20px;
     }
+
+    .custom-quantity-field-wrapper {
+      min-width: 110px;
+    }
+
+    .custom-quantity-field-advanced-offcanvas-size {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
 }
+
+.custom-qty-field-plugin-phoneOrderOnly-container {
+  background-color: #f4ced1;
+}
+
+
