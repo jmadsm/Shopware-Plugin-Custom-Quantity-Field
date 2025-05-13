@@ -106,6 +106,7 @@ export default class CustomQuantityFieldPlugin extends Plugin {
         // Stop the form when enter is pressed on the number field
         if (event.key === 'Enter') {
             event.preventDefault();
+            this.input.blur();
         }
         // Allow: backspace, delete, tab, escape, enter and .
         for (let i = 0; i < keys.length; i++) {
