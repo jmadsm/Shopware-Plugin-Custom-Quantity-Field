@@ -10,7 +10,7 @@
          {{ parent() }}
      {% endblock %}
 
-     {% set phoneOrdersOnly = product.customFields.custom_dsm_product_attributes_not_sold_online %}
+     {% set ordertype = product.customFields.custom_dsm_product_attributes_not_sold_online %}
 
      {% if config("JmaCustomQuantityField").config.quantityListingPage %}
          {% block page_product_detail_custom_quantity_field %}
@@ -51,10 +51,14 @@
                  {% endblock %}
                  {% block page_product_detail_custom_quantity_field_button %}
                      <div class="d-flex flex-wrap custom-quantity-field-btn">
-                         {% if phoneOrdersOnly %}
+                         {% if ordertype == 'PhoneOnly' or ordertype == 'ExpiredWithoutReplacement' or ordertype == '1' or ordertype is same as(true) %}
                              <div class="custom-qty-field-plugin-phoneOrderOnly-container mt-2 px-1">
                                  <div class="custom-qty-field-plugin-phoneOrderOnly danger-text">
-                                     {{ "jma.themeOverrides.product.details.phoneOrdersOnly"|trans|sw_sanitize }}
+                                     {% if ordertype == 'ExpiredWithoutReplacement' %}
+                                         {{ "jma.themeOverrides.product.details.expiredWithoutReplacement"|trans|sw_sanitize }}
+                                     {% else %}
+                                         {{ "jma.themeOverrides.product.details.phoneOrdersOnly"|trans|sw_sanitize }}
+                                     {% endif %}
                                  </div>
                              </div>
                          {% else %}
@@ -71,10 +75,14 @@
              </div>
          {% endblock %}
      {% else %}
-         {% if phoneOrdersOnly %}
+         {% if ordertype == 'PhoneOnly' or ordertype == 'ExpiredWithoutReplacement' or ordertype == '1' or ordertype is same as(true) %}
              <div class="custom-qty-field-plugin-phoneOrderOnly-container mt-2 px-1">
                  <div class="custom-qty-field-plugin-phoneOrderOnly danger-text">
-                     {{ "jma.themeOverrides.product.details.phoneOrdersOnly"|trans|sw_sanitize }}
+                     {% if ordertype == 'ExpiredWithoutReplacement' %}
+                         {{ "jma.themeOverrides.product.details.expiredWithoutReplacement"|trans|sw_sanitize }}
+                     {% else %}
+                         {{ "jma.themeOverrides.product.details.phoneOrdersOnly"|trans|sw_sanitize }}
+                     {% endif %}
                  </div>
              </div>
          {% else %}
